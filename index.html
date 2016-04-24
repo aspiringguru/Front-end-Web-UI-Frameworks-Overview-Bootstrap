@@ -166,16 +166,32 @@
 
         <!-- second content row -->
         <div class="row row-content">
-            <div  class="col-xs-12 col-sm-3 col-sm-push-9">
+            <!--  <div  class="col-xs-12 col-sm-3 col-sm-push-9">  -->
+            <!--  removing the 'col-sm-push-9' to position the text as required -->
+            <div  class="col-xs-12 col-sm-3">
                 <p style="padding:20px;"></p>
                 <h3 align="center">This Month's Promotions</h3>
             </div>
-            <div  class="col-xs-12 col-sm-9 col-sm-pull-3">
-                <h2>Weekend Grand Buffet</h2>
-                <p>Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
-                <!-- <p><a href="index.html">More »</a></p> -->
-                <!-- change link to button. -->
-                <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+            <!-- <div  class="col-xs-12 col-sm-9 col-sm-pull-3"> -->
+            <!--  removing the 'col-sm-pull-3' to position the text as required -->
+            <div  class="col-xs-12 col-sm-9">
+              <div class="media">
+                <div class="media-body">
+                  <h2>Weekend Grand Buffet
+                    <span class="label label-danger">New</span>
+                  </h2>
+                  <p>Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
+                  <!-- <p><a href="index.html">More »</a></p> -->
+                  <!-- change link to button. -->
+                  <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+                </div><!-- end media-body div -->
+                <div class="media-right media-middle">
+                  <!--  -->
+                  <a href="#">
+                     <img src="img/buffet.png" class="media-object img-thumbnail" alt="Weekend Grand Buffet">
+                  </a>
+                </div><!-- end media-right media-middle -->
+              </div><!-- end media div -->
             </div>
         </div>
 
@@ -206,44 +222,53 @@
         </div>
         <!-- add row for booking form here -->
         <div class="row row-content">
-            <div class="col-xs-12 col-sm-3 col-sm-push-9">
+            <!-- <div class="col-xs-12 col-sm-3 col-sm-push-9"> -->
+            <div class="col-md-3">
                 <p style="padding:20px;"></p>
                 <h3 align="center">Reserve a Table</h3>
             </div>
 
-            <div  class="col-xs-12 col-sm-9 col-sm-pull-3">
+            <!-- <div  class="col-xs-12 col-sm-9 col-sm-pull-3"> -->
+            <div  class="col-md-9">
             <!-- insert form here  -->
-            <form class="navbar-form navbar-right" role="search">
+            <form class="form-horizontal" id="reservation-form" role="form">
                 <div class="form-group">
-                    <label class="radio-inline"><input type="radio" name="optradio">1</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">2</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">3</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">4</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">5</label>
-                    <label class="radio-inline"><input type="radio" name="optradio">6</label>
-                </div>
+                    <label for="Number of Guests" class="col-sm-2 control-label">Number of Guests</label>
+                    <div class="col-sm-10">
+                        <label class="radio-inline"><input type="radio" name="optradio" id="inlineRadio1" value="option1">1</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" id="inlineRadio2" value="option2">2</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" id="inlineRadio3" value="option3">3</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" id="inlineRadio4" value="option4">4</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" id="inlineRadio5" value="option5">5</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" id="inlineRadio6" value="option6">6</label>
+                    </div> <!-- end div col-sm-10 -->
+                </div><!-- form-group -->
 
                 <div class="form-group">
-                  Date and Time
-                  <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                  </div>
-                </div>
+                    <label for="date" class="col-sm-2 control-label">Date and Time</label>
+                    <div id="date" class="inner-adon right-addon col-sm-3" style="padding: 0px;">
+                      <input type="text" class="form-control" value="Date" placeholder="Date">
+                      <input type="date" class="form-control"  placeholder="Date">
+                      <i class="glyphicon glyphicon-calendar form-control-feedback" style="margin-right: 15px;"></i>
+                    </div>
+                    <div class="inner-adon right-addon col-sm-3 col-sm-offset-1" style="padding: 0px;">
+                        <input type="text" class="form-control" value="Time" placeholder="Time">
+                        <input type="time" class="form-control" value="Time" placeholder="Time">
+                        <i class="glyphicon glyphicon-time form-control-feedback" style="margin-right: 15px;"></i>
+                    </div>
+                </div><!-- form-group -->
 
                 <div class="form-group">
-                    <div class="bfh-timepicker">blah</div>
+                    <button class="btn btn-primary col-sm-offset-2">Reserve</button>
                 </div>
-
-                <button type="submit" class="btn btn-info">Reserve</button>
             </form>
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <!-- NB: button below provides action to make the alert dismissable. -->
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Warning!</strong> Please <a href="tel:+85212345678" class="alert-link">call</a> us to reserve for more than six guests.
             </div>
         </div> <!-- end div row -->
-            <div class="alert alert-warning">
-                <strong>Warning!</strong> Indicates a warning that might need attention.
-            </div>
     </div>
 
     <footer>
