@@ -76,6 +76,15 @@
 
                     <li><a href="contactus.html" class="fa fa-envelope-o">Contact</a></li>
                 </ul>
+                <!-- added for exercise Exercise Tooltips and Modals @ 8:47-->
+                <!-- class="navbar-right" positions this on right -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a data-toggle="modal" data-target="#loginModal">
+                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                </ul>
+
+                <!-- 
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Username">
@@ -90,9 +99,42 @@
                     </div>
                     <button type="submit" class="btn btn-info">Sign In</button>
                 </form>
+                form removed from navbar since moving the form into class='modal-body'
+                -->
             </div>
         </div>
     </nav>  
+    <!-- model added for Exercise Tooltips and Modals @4:33 -->
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login </h4>
+            </div>
+            <div class="modal-body">
+                <!-- NB: form class changed from navbar-form & navbar-right to 'form-inline' -->
+                <form class="form-inline" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <p class="navbar-text">
+                        <input type="checkbox" value="">
+                        Remember me</p>
+                    </div>
+                    <button type="submit" class="btn btn-info">Sign In</button>
+                </form>
+            </div>
+            <!-- NB: not using class "model-footer" this time, but it would go here. -->
+
+        </div>
+        </div>
+    </div>
 
     <header class="jumbotron">
         <!-- Main component for a primary marketing message or call to action -->
@@ -117,9 +159,12 @@
                     <!-- the padding moves the button down, at top otherwise -->
                     <!-- tried other methods to centre button and failed. -->
                     <p style="padding:20px;"></p>
-                    <p>
                         <!-- class btn-block creates a block level button -->
-                        <a id="reserveBtn" type="button" class="btn btn-warning btn-block" role="button">Reserve Table</a>
+                        <!-- <a id="reserveBtn" type="button" class="btn btn-warning btn-block" role="button"> -->
+                        <!-- above line swapped out for line below in Exercise Tooltips and Modals @ 1:56 -->
+                        <a type="button" class="btn btn-warning btn-block" data-toggle="tooltip" 
+                            title="Or Call us at +852 12345678" data-placement="bottom" href="#reserveform">
+                            Reserve Table</a>
                     </p>
                 </div>
             </div>
@@ -340,5 +385,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<!-- script below added for Exercise Tooltips and Modals @ 2'33" -->
+ <script>
+        $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+         });
+</script>
 </body>
 </html>
