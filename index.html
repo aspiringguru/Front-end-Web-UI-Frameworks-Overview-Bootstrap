@@ -11,10 +11,11 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <title>Ristorante Con Fusion</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- links for .css files updated to bower compatible directory structure. -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- css below added in lecture Exercise (Video): Navbar @ 12:53 -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -79,8 +80,10 @@
                 <!-- added for exercise Exercise Tooltips and Modals @ 8:47-->
                 <!-- class="navbar-right" positions this on right -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a data-toggle="modal" data-target="#loginModal">
-                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    <li>
+                        <!-- <a data-toggle="modal" data-target="#loginModal"> earlier method to activate login without javascript-->
+                        <a id="login"><!-- javascript method added for assignment 4 -->
+                        <span class="glyphicon glyphicon-log-in"></span> Login</a><!-- NB: space to separate text from glyphicon on screen -->
                     </li>
                 </ul>
 
@@ -242,11 +245,9 @@
                     <p style="padding:20px;"></p>
                         <!-- class btn-block creates a block level button -->
                         <!-- <a id="reserveBtn" type="button" class="btn btn-warning btn-block" role="button">-->
-                        <a id="reserveBtn" type="button" class="btn btn-warning btn-block" role="button" data-toggle="modal" data-target="#reserveModal">
-                        <!-- below line swapped out for line above for assignment 3 task 1-->
-                        <!-- <a type="button" class="btn btn-warning btn-block" data-toggle="tooltip" 
-                            title="Or Call us at +852 12345678" data-placement="bottom" href="#reserveform">-->
-                            Reserve Table</a>
+                        <!-- <a id="reserveBtn" type="button" class="btn btn-warning btn-block" role="button" data-toggle="modal" data-target="#reserveModal">
+                            Reserve Table</a> -->
+                        <a class="btn btn-warning btn-block" id="reserveBtn">Reserve Table</a><!-- javascript method added for assignment 4 -->
                     </p>
                 </div>
             </div>
@@ -322,6 +323,15 @@
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                    <!-- added carouselButtons for Exercise (Video): Bootstrap and JQuery @ 1:36, pause & play -->
+                    <div class="btn-group" id="carouselButtons">
+                        <button class="btn btn-danger btn-xs" id="carousel-pause">
+                            <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-danger btn-xs" id="carousel-play">
+                            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        </button>
+                    </div>
                 </div><!-- end div class="carousel slide" -->
             </div>
        </div>
@@ -483,14 +493,41 @@
     </footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- bower directory version replaces  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- bower directory version replaces  <script src="js/bootstrap.min.js"></script> -->
 <!-- script below added for Exercise Tooltips and Modals @ 2'33" -->
  <script>
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
          });
 </script>
+<!-- added for Exercise (Video): Bootstrap and JQuery @ 2'55" -->
+ <script>
+        $(document).ready(function(){
+            $("#mycarousel").carousel( { interval: 2000 } );
+                          $("#carousel-pause").click(function(){
+                $("#mycarousel").carousel('pause');
+            });
+                        $("#carousel-play").click(function(){
+                $("#mycarousel").carousel('cycle');
+            });
+        });
+</script>
+<!-- script to call modal #reserveModal -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#reserveBtn").click(function(){ $("#reserveModal").modal('show'); });
+    });
+</script>
+<!-- NB: as expected, these scripts launch both models since the scripts are both called by the same action -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#login").click(function(){ $("#loginModal").modal('show'); });
+        });
+    </script>
 </body>
 </html>
